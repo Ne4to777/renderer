@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "outDir": "./build",
+        "downlevelIteration": true,
+        "sourceMap": true,
+        "types": [
+            "node",
+            "webpack-env"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+    ]
+}

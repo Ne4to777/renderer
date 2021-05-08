@@ -1,0 +1,166 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "tsconfig.json"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        },
+        "import/extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+        ],
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "airbnb-base",
+        "airbnb-base/rules/strict",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
+    "rules": {
+        "import/namespace": "off",
+        "import/export": "off",
+        "func-names": "off",
+        "no-restricted-syntax": "off",
+        "guard-for-in": "off",
+        "no-use-before-define": "off",
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    [
+                        "parent",
+                        "sibling"
+                    ],
+                    "index"
+                ],
+                "newlines-between": "always"
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "import/no-cycle": "off",
+        "indent": "off",
+        "no-param-reassign": "off",
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1,
+                "VariableDeclarator": 1,
+                "outerIIFEBody": 1,
+                "FunctionDeclaration": {
+                    "parameters": 1,
+                    "body": 1
+                },
+                "FunctionExpression": {
+                    "parameters": 1,
+                    "body": 1
+                }
+            }
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+            "error",
+            {
+                "multiline": {
+                    "delimiter": "comma",
+                    "requireLast": true
+                },
+                "singleline": {
+                    "delimiter": "comma",
+                    "requireLast": false
+                },
+                "overrides": {
+                    "interface": {
+                        "multiline": {
+                            "delimiter": "semi",
+                            "requireLast": true
+                        }
+                    }
+                }
+            }
+        ],
+        "@typescript-eslint/type-annotation-spacing": [
+            "error",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/restrict-plus-operator": "off",
+        "@typescript-eslint/restrict-plus-operands": "off",
+        "@typescript-eslint/no-unnecessary-type-assertion": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "react/prop-types": "off"
+    }
+}
