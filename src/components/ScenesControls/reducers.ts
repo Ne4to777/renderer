@@ -23,9 +23,31 @@ export default {
         const scene = state.scenes[state.activeSceneId];
         scene.cameras[scene.params.activeCameraId].position.z = payload;
     },
+    [`${actions.changeCameraAngleAlpha}`]: ({state, payload}: any) => {
+        const scene = state.scenes[state.activeSceneId];
+        scene.cameras[scene.params.activeCameraId].angle.alpha = payload;
+    },
+    [`${actions.changeCameraAngleBeta}`]: ({state, payload}: any) => {
+        const scene = state.scenes[state.activeSceneId];
+        scene.cameras[scene.params.activeCameraId].angle.beta = payload;
+    },
     [`${actions.changeCameraAOV}`]: ({state, payload}: any) => {
         const scene = state.scenes[state.activeSceneId];
         scene.cameras[scene.params.activeCameraId].params.aov = payload;
+    },
+    [`${actions.stepCameraPosition}`]: ({state, payload}: any) => {
+        const scene = state.scenes[state.activeSceneId];
+        const {position} = scene.cameras[scene.params.activeCameraId];
+        position.x += payload.x ?? 0;
+        position.y += payload.y ?? 0;
+        position.z += payload.z ?? 0;
+    },
+    [`${actions.stepCameraAngle}`]: ({state, payload}: any) => {
+        const scene = state.scenes[state.activeSceneId];
+        const {angle} = scene.cameras[scene.params.activeCameraId];
+        angle.alpha += payload.alpha ?? 0;
+        angle.beta += payload.beta ?? 0;
+        angle.gamma += payload.gamma ?? 0;
     },
     [`${actions.changeObjectPositionX}`]: ({state, payload}: any) => {
         const scene = state.scenes[state.activeSceneId];

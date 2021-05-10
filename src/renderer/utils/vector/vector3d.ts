@@ -5,6 +5,7 @@ import type {
     Mult3D,
     Div3D,
     Dot3D,
+    Cross3D,
     Length3D,
     MultScalar3D,
     DivScalar3D,
@@ -17,6 +18,7 @@ import type {
     Restore3D,
     Invert3D,
     Negate3D,
+    MultMatrix3D,
 } from '../..';
 import {ceilToPrescision, floorToPrescision} from '../../../utils/math';
 
@@ -83,6 +85,9 @@ export const negate3D: Negate3D = function negate3D(a) {
 export const dot3D: Dot3D = function dot3D(a, b) {
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 };
+export const cross3D: Cross3D = function cross3D(a, b) {
+    return v3D(a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]);
+};
 export const restore3D: Restore3D = function restore3D(dV, length, offsetV) {
     return add3D(
         offsetV,
@@ -94,4 +99,11 @@ export const sign3D: Sign3D = function sign3D(a) {
 };
 export const step3D: Step3D = function step3D(a, b) {
     return v3D(b[0] < a[0] ? 0 : 1, b[1] < a[1] ? 0 : 1, b[2] < a[2] ? 0 : 1);
+};
+export const multMatrix3D: MultMatrix3D = function multMatrix3D(a, b, c, d) {
+    return v3D(
+        a[0] * b[0] + a[1] * c[0] + a[2] * d[0],
+        a[0] * b[1] + a[1] * c[1] + a[2] * d[1],
+        a[0] * b[2] + a[1] * c[2] + a[2] * d[2]
+    );
 };

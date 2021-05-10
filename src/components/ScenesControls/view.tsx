@@ -8,40 +8,102 @@ import type {View} from '.';
 import 'fontsource-roboto';
 import './style.styl';
 
-const keysMap = {
-    87: 'stepForward',
-    83: 'stepBackward',
-    65: 'stepLeft',
-    68: 'stepRight',
-    81: 'stepUp',
-    90: 'stepDown',
-    0: 'empty',
+const keysMapTranslation = {
+    87: {
+        axis: 'z',
+        step: 0.1,
+    },
+    83: {
+        axis: 'z',
+        step: -0.1,
+    },
+    68: {
+        axis: 'x',
+        step: 0.1,
+    },
+    65: {
+        axis: 'x',
+        step: -0.1,
+    },
+    32: {
+        axis: 'y',
+        step: 0.1,
+    },
+    17: {
+        axis: 'y',
+        step: -0.1,
+    },
+    0: {
+        axis: '',
+        step: 0,
+    },
 };
 
-const keyDownHandler = (steps: any) => ({keyCode}: {keyCode: number}) => {
-    // console.log(keyCode);
-    const command = keysMap[keyCode as keyof typeof keysMap ?? 0];
-    if (command) steps[command]?.();
+const keysMapRotation = {
+    39: {
+        angle: 'alpha',
+        step: 0.1,
+    },
+    37: {
+        angle: 'alpha',
+        step: -0.1,
+    },
+    40: {
+        angle: 'beta',
+        step: 0.1,
+    },
+    38: {
+        angle: 'beta',
+        step: -0.1,
+    },
 };
 
-const keyDownEffect = ({
-    stepForward,
-    stepBackward,
-    stepLeft,
-    stepRight,
-    stepUp,
-    stepDown,
-}: any) => {
-    const onKeyDown = keyDownHandler({
-        stepForward,
-        stepBackward,
-        stepLeft,
-        stepRight,
-        stepUp,
-        stepDown,
-    });
+const pressedKeys = {} as Record<string, Record<string, any>>;
+const keyDownEffect = ({stepCameraPosition, stepCameraAngle}: any) => {
+    const onKeyDown = (e: any) => {
+        e.preventDefault();
+        const {keyCode} = e;
+        // console.log(keyCode);
+        const position = {} as Record<string, number>;
+        const angles = {} as Record<string, number>;
+        const translation = keysMapTranslation[keyCode as keyof typeof keysMapTranslation] ?? 0;
+        if (translation.axis) {
+            pressedKeys[keyCode] = {axis: translation.axis, step: translation.step};
+        }
+        for (const key in pressedKeys) {
+            const pressedKey = pressedKeys[key];
+            position[pressedKey.axis] = pressedKey.step;
+        }
+        stepCameraPosition(position);
+
+        const rotation = keysMapRotation[keyCode as keyof typeof keysMapRotation] ?? 0;
+
+        if (rotation.angle) {
+            pressedKeys[keyCode] = {angle: rotation.angle, step: rotation.step};
+        }
+        for (const key in pressedKeys) {
+            const pressedKey = pressedKeys[key];
+            angles[pressedKey.angle] = pressedKey.step;
+        }
+        stepCameraAngle(angles);
+    };
+    const onKeyUp = ({keyCode}: {keyCode: number}) => {
+        // console.log(keyCode);
+        const translation = keysMapTranslation[keyCode as keyof typeof keysMapTranslation] ?? 0;
+        if (translation) {
+            delete pressedKeys[keyCode];
+        }
+        const rotation = keysMapRotation[keyCode as keyof typeof keysMapRotation] ?? 0;
+        if (rotation) {
+            delete pressedKeys[keyCode];
+        }
+    };
     document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    document.addEventListener('keyup', onKeyUp);
+    return () => {
+        document.removeEventListener('keydown', onKeyDown);
+        document.removeEventListener('keyup', onKeyUp);
+    };
 };
 const ScenesSelectorMemo = React.memo(
     ScenesSelector,
@@ -54,6 +116,10 @@ export default (({
     changeCameraPositionX,
     changeCameraPositionY,
     changeCameraPositionZ,
+    changeCameraAngleAlpha,
+    changeCameraAngleBeta,
+    stepCameraPosition,
+    stepCameraAngle,
     changeCameraAOV,
     changeObjectPositionX,
     changeObjectPositionY,
@@ -61,12 +127,6 @@ export default (({
     changeLightPositionX,
     changeLightPositionY,
     changeLightPositionZ,
-    stepForward,
-    stepBackward,
-    stepLeft,
-    stepRight,
-    stepUp,
-    stepDown,
     scenesDefault,
     scenes,
     activeSceneIdDefault,
@@ -75,18 +135,10 @@ export default (({
     // eslint-disable-next-line no-console
     console.log('ScenesControls');
 
-    useEffect(() => keyDownEffect({
-        stepForward,
-        stepBackward,
-        stepLeft,
-        stepRight,
-        stepUp,
-        stepDown,
-    }));
+    useEffect(() => keyDownEffect({stepCameraPosition, stepCameraAngle}));
 
     return (
         <div className="scenes-controls-wrapper">
-            {/* <Typography>Scenes</Typography> */}
             <div className="scenes-controls">
                 <ScenesSelectorMemo
                     scenes={scenes}
@@ -97,11 +149,13 @@ export default (({
                 <SceneControls
                     sceneId={activeSceneId}
                     scene={scenes[activeSceneId]}
-                    sceneDefault={scenesDefault[activeSceneIdDefault]}
+                    sceneDefault={scenesDefault[activeSceneId]}
                     onChangeActiveCameraId={changeActiveCameraId}
                     onChangeCameraPositionX={changeCameraPositionX}
                     onChangeCameraPositionY={changeCameraPositionY}
                     onChangeCameraPositionZ={changeCameraPositionZ}
+                    onChangeCameraAngleAlpha={changeCameraAngleAlpha}
+                    onChangeCameraAngleBeta={changeCameraAngleBeta}
                     onChangeCameraAOV={changeCameraAOV}
                     onChangeObjectPositionX={changeObjectPositionX}
                     onChangeObjectPositionY={changeObjectPositionY}

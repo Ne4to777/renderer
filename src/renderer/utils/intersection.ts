@@ -40,18 +40,14 @@ export const getSphereIntersectionDistances = (function getSphereIntersectionDis
     sphereOriginV,
     sphereRadius
 ) {
-    const ray2centerV = sub3D(sphereOriginV, rayOriginV);
+    const ray2centerV = sub3D(rayOriginV, sphereOriginV);
     // ray origin to sphere center projection length
     const ray2centerPL = dot3D(ray2centerV, rayDirectionV);
-    if (ray2centerPL < 0) return v2D(0, 0);
-    // square of sphere radius
-    const sphereRadius2 = sphereRadius ** 2;
     // square of sphere center to ray direction projection length
-    const center2rayL2 = dot3D(ray2centerV, ray2centerV) - ray2centerPL ** 2;
-    if (sphereRadius2 < center2rayL2) return v2D(0, 0);
-    // intersection point to center projection length
-    const radius2rayPL = Math.sqrt(sphereRadius2 - center2rayL2);
-    return v2D(ray2centerPL - radius2rayPL, ray2centerPL - radius2rayPL);
+    const center2rayL2 = ray2centerPL ** 2 - dot3D(ray2centerV, ray2centerV) + sphereRadius ** 2;
+    if (center2rayL2 < 0) return v2D(0, 0);
+    const radius2rayPL = Math.sqrt(center2rayL2);
+    return v2D(-ray2centerPL - radius2rayPL, -ray2centerPL + radius2rayPL);
 } as GetSphereIntersectionDistances);
 
 export const getPlaneIntersectionDistances = (function getPlaneIntersectionDistances(
@@ -59,7 +55,7 @@ export const getPlaneIntersectionDistances = (function getPlaneIntersectionDista
     rayDirectionV,
     planeOriginV
 ) {
-    const N = v3D(0, 1, 0);
+    const N = v3D(0, -1, 0);
     return v2D(-dot3D(sub3D(rayOriginV, planeOriginV), N) / dot3D(rayDirectionV, N), 0);
 } as GetPlaneIntersectionDistances);
 

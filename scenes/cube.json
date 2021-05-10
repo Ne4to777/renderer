@@ -1,0 +1,78 @@
+{
+    "meta": {
+        "id": "cube",
+        "title": "cube",
+        "type": "default"
+    },
+    "params": {
+        "activeCameraId": "testCameraId1"
+    },
+    "cameras": [
+        {
+            "meta": {
+                "id": "testCameraId1",
+                "title": "test Camera 11",
+                "type": "default"
+            },
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "angle": {
+                "alpha": 0,
+                "beta": 0,
+                "gamma": 0
+            },
+            "params": {
+                "aov": 70
+            }
+        }
+    ],
+    "objects": [
+        {
+            "meta": {
+                "id": "testCubeId1",
+                "title": "test Cube",
+                "type": "cube"
+            },
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 5
+            },
+            "angle": {
+                "alpha": 0,
+                "beta": 0,
+                "gamma": 0
+            },
+            "params": {
+                "size": 1,
+                "isVisible": true
+            }
+        }
+    ],
+    "lights": [
+        {
+            "meta": {
+                "id": "testLightId1",
+                "title": "test Light",
+                "type": "default"
+            },
+            "position": {
+                "x": 0,
+                "y": -1,
+                "z": -5
+            },
+            "angle": {
+                "alpha": 0,
+                "beta": 0,
+                "gamma": 0
+            },
+            "params": {
+                "size": 1,
+                "isVisible": true
+            }
+        }
+    ]
+}

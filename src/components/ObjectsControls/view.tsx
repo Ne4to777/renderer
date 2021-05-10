@@ -96,4 +96,5 @@ export default React.memo((({
         </div>
     );
 }) as View,
-(prev, next) => JSON.stringify(prev.objects) === JSON.stringify(next.objects));
+(prev, next) => JSON.stringify(prev.objects) === JSON.stringify(next.objects)
+&& JSON.stringify(prev.objectsDefault) === JSON.stringify(next.objectsDefault));

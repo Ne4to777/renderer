@@ -22,6 +22,8 @@ export default (({
     onChangeCameraPositionX,
     onChangeCameraPositionY,
     onChangeCameraPositionZ,
+    onChangeCameraAngleAlpha,
+    onChangeCameraAngleBeta,
     onChangeCameraAOV,
     onChangeObjectPositionX,
     onChangeObjectPositionY,
@@ -62,6 +64,8 @@ export default (({
                         onChangePositionX={onChangeCameraPositionX}
                         onChangePositionY={onChangeCameraPositionY}
                         onChangePositionZ={onChangeCameraPositionZ}
+                        onChangeAngleAlpha={onChangeCameraAngleAlpha}
+                        onChangeAngleBeta={onChangeCameraAngleBeta}
                         onChangeAOV={onChangeCameraAOV}
                     />
                 </div>

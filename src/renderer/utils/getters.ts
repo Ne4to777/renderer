@@ -18,9 +18,9 @@ import type {
     GetCameraPositionY,
     GetCameraPositionZ,
     GetCameraAngle,
-    GetCameraAngleX,
-    GetCameraAngleY,
-    GetCameraAngleZ,
+    GetCameraAngleAlpha,
+    GetCameraAngleBeta,
+    GetCameraAngleGamma,
     GetCameraParams,
     GetCameraAOV,
     GetObjectMeta,
@@ -32,9 +32,9 @@ import type {
     GetObjectPositionY,
     GetObjectPositionZ,
     GetObjectAngle,
-    GetObjectAngleX,
-    GetObjectAngleY,
-    GetObjectAngleZ,
+    GetObjectAngleAlpha,
+    GetObjectAngleBeta,
+    GetObjectAngleGamma,
     GetObjectParams,
     GetObjectSize,
     GetObjectIsVisible,
@@ -47,9 +47,9 @@ import type {
     GetLightPositionY,
     GetLightPositionZ,
     GetLightAngle,
-    GetLightAngleX,
-    GetLightAngleY,
-    GetLightAngleZ,
+    GetLightAngleAlpha,
+    GetLightAngleBeta,
+    GetLightAngleGamma,
     GetLightParams,
 } from '.';
 
@@ -74,9 +74,9 @@ export const getCameraPositionX: GetCameraPositionX = camera => getCameraPositio
 export const getCameraPositionY: GetCameraPositionY = camera => getCameraPosition(camera).y;
 export const getCameraPositionZ: GetCameraPositionZ = camera => getCameraPosition(camera).z;
 export const getCameraAngle: GetCameraAngle = camera => camera.angle;
-export const getCameraAngleX: GetCameraAngleX = camera => getCameraAngle(camera).x;
-export const getCameraAngleY: GetCameraAngleY = camera => getCameraAngle(camera).y;
-export const getCameraAngleZ: GetCameraAngleZ = camera => getCameraAngle(camera).z;
+export const getCameraAngleAlpha: GetCameraAngleAlpha = camera => getCameraAngle(camera).alpha;
+export const getCameraAngleBeta: GetCameraAngleBeta = camera => getCameraAngle(camera).beta;
+export const getCameraAngleGamma: GetCameraAngleGamma = camera => getCameraAngle(camera).gamma;
 export const getCameraParams: GetCameraParams = camera => camera.params;
 export const getCameraAOV: GetCameraAOV = camera => getCameraParams(camera).aov;
 
@@ -90,9 +90,9 @@ export const getObjectPositionX: GetObjectPositionX = object => getObjectPositio
 export const getObjectPositionY: GetObjectPositionY = object => getObjectPosition(object).y;
 export const getObjectPositionZ: GetObjectPositionZ = object => getObjectPosition(object).z;
 export const getObjectAngle: GetObjectAngle = object => object.angle;
-export const getObjectAngleX: GetObjectAngleX = object => getObjectAngle(object).x;
-export const getObjectAngleY: GetObjectAngleY = object => getObjectAngle(object).y;
-export const getObjectAngleZ: GetObjectAngleZ = object => getObjectAngle(object).z;
+export const getObjectAngleAlpha: GetObjectAngleAlpha = object => getObjectAngle(object).alpha;
+export const getObjectAngleBeta: GetObjectAngleBeta = object => getObjectAngle(object).beta;
+export const getObjectAngleGamma: GetObjectAngleGamma = object => getObjectAngle(object).gamma;
 export const getObjectParams: GetObjectParams = object => object.params;
 export const getObjectSize: GetObjectSize = object => object.params.size;
 export const getObjectIsVisible: GetObjectIsVisible = object => Boolean(object.params.isVisible);
@@ -107,7 +107,7 @@ export const getLightPositionX: GetLightPositionX = light => getLightPosition(li
 export const getLightPositionY: GetLightPositionY = light => getLightPosition(light).y;
 export const getLightPositionZ: GetLightPositionZ = light => getLightPosition(light).z;
 export const getLightAngle: GetLightAngle = light => light.angle;
-export const getLightAngleX: GetLightAngleX = light => getLightAngle(light).x;
-export const getLightAngleY: GetLightAngleY = light => getLightAngle(light).y;
-export const getLightAngleZ: GetLightAngleZ = light => getLightAngle(light).z;
+export const getLightAngleAlpha: GetLightAngleAlpha = light => getLightAngle(light).alpha;
+export const getLightAngleBeta: GetLightAngleBeta = light => getLightAngle(light).beta;
+export const getLightAngleGamma: GetLightAngleGamma = light => getLightAngle(light).gamma;
 export const getLightParams: GetLightParams = light => light.params;

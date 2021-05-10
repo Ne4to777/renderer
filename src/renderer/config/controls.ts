@@ -19,6 +19,23 @@ export default ({
                 step: 0.01,
             },
         },
+        angle: {
+            alpha: {
+                min: -100,
+                max: 100,
+                step: 0.1,
+            },
+            beta: {
+                min: -100,
+                max: 100,
+                step: 0.1,
+            },
+            gamma: {
+                min: -100,
+                max: 100,
+                step: 0.1,
+            },
+        },
         params: {
             aov: {
                 min: 0,

@@ -27,7 +27,7 @@ import {invert3D} from './vector';
 
 export const getRay3D: GetRay3D = function getRay3D(x, y, WIDTH_HALF, HEIGHT_HALF, cameraAOV) {
     const offsetX = x - WIDTH_HALF;
-    const offsetY = y - HEIGHT_HALF;
+    const offsetY = HEIGHT_HALF - y;
     const offsetZ = HEIGHT_HALF / Math.tan(cameraAOV * (Math.PI / 360));
     return v3D(offsetX, offsetY, offsetZ);
 };
@@ -51,11 +51,11 @@ export const getDiffused: GetDiffused = function getDiffused(lightDirection, pos
 };
 
 export const getSphereDiffuse = (function getSphereDiffuse(roV, rdV, ooV, ldV, near) {
-    return -dot3D(ldV, normalize3D(restore3D(rdV, near, sub3D(roV, ooV))));
+    return dot3D(ldV, normalize3D(restore3D(rdV, near, sub3D(roV, ooV))));
 } as GetSphereDiffuse);
 
 export const getPlaneDiffuse = (function getPlaneDiffuse(ldV) {
-    return -dot3D(ldV, v3D(0, 1, 0));
+    return dot3D(ldV, v3D(0, 1, 0));
 } as GetPlaneDiffuse);
 
 export const getCubeDiffuse = (function getCubeDiffuse(roV, rdV, ooV, ldV, cubeSize) {

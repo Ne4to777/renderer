@@ -51,7 +51,7 @@ export default React.memo(
                 <Typography>{propName}</Typography>
                 <Slider
                     defaultValue={valueDefault[propType][propName]}
-                    value={value[propType][propName]}
+                    value={value[propType][propName] ?? 0}
                     ValueLabelComponent={ValueLabelComponent}
                     aria-label={propName}
                     min={control.min}

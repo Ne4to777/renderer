@@ -30,6 +30,8 @@ import {
     getCameraAOV,
     getObjectSize,
     getObjectType,
+    getCameraAngleAlpha,
+    getCameraAngleBeta,
 } from './getters';
 
 const {image: {HEIGHT}} = config;
@@ -45,6 +47,8 @@ export const cameraToKernelData: CameraToKernelData = (id, camera) => [
     getCameraPositionX(camera),
     getCameraPositionY(camera),
     getCameraPositionZ(camera),
+    getCameraAngleAlpha(camera),
+    getCameraAngleBeta(camera),
     getCameraAOV(camera),
 ];
 export const objectToKernelData: ObjectToKernelData = (id, object) => [

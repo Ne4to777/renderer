@@ -31,6 +31,11 @@ export interface Axes3D {
     y: number;
     z: number;
 }
+export interface Angles3D {
+    alpha: number;
+    beta: number;
+    gamma: number;
+}
 
 export interface SceneCameraParams {
     aov: number;
@@ -39,7 +44,7 @@ export interface SceneCameraParams {
 export interface SceneCamera {
     meta: SceneCameraMeta;
     position: Axes3D;
-    angle: Axes3D;
+    angle: Angles3D;
     params: SceneCameraParams;
 }
 export interface SceneCameras {
@@ -71,7 +76,7 @@ export interface SceneObjectMeta {
 export interface SceneObject {
     meta: SceneObjectMeta;
     position: Axes3D;
-    angle: Axes3D;
+    angle: Angles3D;
     params: SceneObjectParams;
 }
 export interface SceneObjects {
@@ -89,7 +94,7 @@ export interface SceneLightParams {
 export interface SceneLight {
     meta: SceneLightMeta;
     position: Axes3D;
-    angle: Axes3D;
+    angle: Angles3D;
     params: SceneLightParams;
 }
 export interface SceneLights {
@@ -122,10 +127,10 @@ export type GetCameraPosition = (camera: SceneCamera)=> Axes3D
 export type GetCameraPositionX = (camera: SceneCamera)=> number
 export type GetCameraPositionY = (camera: SceneCamera)=> number
 export type GetCameraPositionZ = (camera: SceneCamera)=> number
-export type GetCameraAngle = (camera: SceneCamera)=> Axes3D
-export type GetCameraAngleX = (camera: SceneCamera)=> number
-export type GetCameraAngleY = (camera: SceneCamera)=> number
-export type GetCameraAngleZ = (camera: SceneCamera)=> number
+export type GetCameraAngle = (camera: SceneCamera)=> Angles3D
+export type GetCameraAngleAlpha = (camera: SceneCamera)=> number
+export type GetCameraAngleBeta = (camera: SceneCamera)=> number
+export type GetCameraAngleGamma = (camera: SceneCamera)=> number
 export type GetCameraParams = (camera: SceneCamera)=> SceneCameraParams
 export type GetCameraAOV = (camera: SceneCamera)=> number
 export type GetObjectMeta = (object: SceneObject)=> SceneObjectMeta
@@ -136,10 +141,10 @@ export type GetObjectPosition = (object: SceneObject)=> Axes3D
 export type GetObjectPositionX = (object: SceneObject)=> number
 export type GetObjectPositionY = (object: SceneObject)=> number
 export type GetObjectPositionZ = (object: SceneObject)=> number
-export type GetObjectAngle = (object: SceneObject)=> Axes3D
-export type GetObjectAngleX = (object: SceneObject)=> number
-export type GetObjectAngleY = (object: SceneObject)=> number
-export type GetObjectAngleZ = (object: SceneObject)=> number
+export type GetObjectAngle = (object: SceneObject)=> Angles3D
+export type GetObjectAngleAlpha = (object: SceneObject)=> number
+export type GetObjectAngleBeta = (object: SceneObject)=> number
+export type GetObjectAngleGamma = (object: SceneObject)=> number
 export type GetObjectParams = (object: SceneObject)=> SceneObjectParams
 export type GetObjectSize = (object: SceneObject)=> number
 export type GetObjectIsVisible = (object: SceneObject)=> boolean
@@ -151,8 +156,8 @@ export type GetLightPosition = (light: SceneLight)=> Axes3D
 export type GetLightPositionX = (light: SceneLight)=> number
 export type GetLightPositionY = (light: SceneLight)=> number
 export type GetLightPositionZ = (light: SceneLight)=> number
-export type GetLightAngle = (light: SceneLight)=> Axes3D
-export type GetLightAngleX = (light: SceneLight)=> number
-export type GetLightAngleY = (light: SceneLight)=> number
-export type GetLightAngleZ = (light: SceneLight)=> number
+export type GetLightAngle = (light: SceneLight)=> Angles3D
+export type GetLightAngleAlpha = (light: SceneLight)=> number
+export type GetLightAngleBeta = (light: SceneLight)=> number
+export type GetLightAngleGamma = (light: SceneLight)=> number
 export type GetLightParams = (light: SceneLight)=> SceneLightParams

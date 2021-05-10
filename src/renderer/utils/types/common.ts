@@ -106,6 +106,11 @@ export interface Config {
 
 export type Vector2D = [number, number]
 export type Vector3D = [number, number, number]
+export type Matrix3D = [
+    [number, number, number],
+    [number, number, number],
+    [number, number, number],
+]
 export type V2D = (x: number, y: number)=> Vector2D
 export type V3D = (x: number, y: number, z: number)=> Vector3D
 export type Add2D = (a: Vector2D, b: Vector2D)=> Vector2D
@@ -118,6 +123,7 @@ export type Max3D = (a: Vector3D)=> number
 export type Min3D = (a: Vector3D)=> number
 export type Dot2D = (a: Vector2D, b: Vector2D)=> number
 export type Dot3D = (a: Vector3D, b: Vector3D)=> number
+export type Cross3D = (a: Vector3D, b: Vector3D)=> Vector3D
 export type Length2D = (a: Vector2D)=> number
 export type Length3D = (a: Vector3D)=> number
 export type MultScalar2D = (a: Vector2D, n: number)=> Vector2D
@@ -130,6 +136,7 @@ export type Invert3D = (a: Vector3D)=> Vector3D
 export type Negate3D = (a: Vector3D)=> Vector3D
 export type Sign3D = (a: Vector3D)=> Vector3D
 export type Step3D = (a: Vector3D, b: Vector3D)=> Vector3D
+export type MultMatrix3D = (a: Vector3D, b: Vector3D, c: Vector3D, d: Vector3D)=> Vector3D
 
 export type Restore3D=(directionV: Vector3D, length: number, offsetV: Vector3D)=> Vector3D
 

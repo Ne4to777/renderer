@@ -3,6 +3,8 @@ export interface State {
     onChangeCameraPositionX: any;
     onChangeCameraPositionY: any;
     onChangeCameraPositionZ: any;
+    onChangeCameraAngleAlpha: any;
+    onChangeCameraAngleBeta: any;
     onChangeCameraAOV: any;
     onChangeObjectPositionX: any;
     onChangeObjectPositionY: any;

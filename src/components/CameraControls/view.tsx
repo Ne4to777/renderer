@@ -11,6 +11,8 @@ export default React.memo((({
     onChangePositionX,
     onChangePositionY,
     onChangePositionZ,
+    onChangeAngleAlpha,
+    onChangeAngleBeta,
     onChangeAOV,
     camera,
     cameraDefault,
@@ -48,6 +50,22 @@ export default React.memo((({
                 />
                 <SliderControl
                     itemName="camera"
+                    propName="alpha"
+                    propType="angle"
+                    value={camera}
+                    valueDefault={cameraDefault}
+                    onChange={onChangeAngleAlpha}
+                />
+                <SliderControl
+                    itemName="camera"
+                    propName="beta"
+                    propType="angle"
+                    value={camera}
+                    valueDefault={cameraDefault}
+                    onChange={onChangeAngleBeta}
+                />
+                <SliderControl
+                    itemName="camera"
                     propName={'aov'}
                     propType="params"
                     value={camera}
@@ -58,4 +76,5 @@ export default React.memo((({
         </div>
     );
 }) as View,
-(prev, next) => JSON.stringify(prev.camera) === JSON.stringify(next.camera));
+(prev, next) => JSON.stringify(prev.camera) === JSON.stringify(next.camera)
+&& JSON.stringify(prev.cameraDefault) === JSON.stringify(next.cameraDefault));

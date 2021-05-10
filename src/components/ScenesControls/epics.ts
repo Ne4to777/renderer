@@ -5,7 +5,6 @@ import {
 import {Epic, ofType} from 'redux-observable';
 
 import {drawImage} from '../../renderer';
-import {stepEpicFactory} from '../../utils/rxjs';
 import * as actions from './actions';
 
 export const changeActiveSceneIdEpic: Epic = (action$, state$) => action$.pipe(
@@ -37,7 +36,11 @@ export const changeCameraPositionXEpic: Epic = (action$, state$) => action$.pipe
         'changeCameraPositionX',
         'changeCameraPositionY',
         'changeCameraPositionZ',
+        'changeCameraAngleAlpha',
+        'changeCameraAngleBeta',
         'changeCameraAOV',
+        'stepCameraPosition',
+        'stepCameraAngle',
         'changeObjectPositionX',
         'changeObjectPositionY',
         'changeObjectPositionZ',
@@ -54,10 +57,3 @@ export const changeCameraPositionXEpic: Epic = (action$, state$) => action$.pipe
     }),
     map(actions.doNothing)
 );
-
-export const stepLeftEpic: Epic = stepEpicFactory('stepLeft', 'cameraX', -0.1, actions.updateState);
-export const stepRightEpic: Epic = stepEpicFactory('stepRight', 'cameraX', 0.1, actions.updateState);
-export const stepUpEpic: Epic = stepEpicFactory('stepUp', 'cameraY', 0.1, actions.updateState);
-export const stepDownEpic: Epic = stepEpicFactory('stepDown', 'cameraY', -0.1, actions.updateState);
-export const stepForwardEpic: Epic = stepEpicFactory('stepForward', 'cameraZ', 0.1, actions.updateState);
-export const stepBackwardEpic: Epic = stepEpicFactory('stepBackward', 'cameraZ', -0.1, actions.updateState);
